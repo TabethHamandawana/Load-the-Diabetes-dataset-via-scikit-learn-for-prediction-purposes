@@ -1,0 +1,83 @@
+#Import the dataset from the scikit learn package
+from sklearn import datasets
+
+#Actual dataset is loaded by using datasets.load
+diabetes = datasets.load_diabetes()
+
+#Description of the variable. This is in the jason format
+diabetes
+
+#Description of the Diabetes dataset
+print(diabetes.DESCR)
+
+#Feature names so that we see our x variables 
+print(diabetes.feature_names)
+
+#Create X and Y data matrices so that we assign into the x and y variables
+X = diabetes.data
+Y = diabetes.target
+
+#To look at the dataset dimension. It gives us the number of rows and columns in the x and y dimensions
+X.shape, Y.shape
+
+X_test.shape, Y_test.shape
+
+#Linear Regression Model
+#Import library the libraries necessary to build the model:
+#To build the model
+from sklearn import linear_model
+
+#To check the performance of the model
+from sklearn.metrics import mean_squared_error, r2_score
+
+#Defines the regression model
+model = linear_model.LinearRegression()
+
+#Define the input for the model building. We will apply this 80% of the training set to the 20% of the testing set 
+model.fit(X_train, Y_train)
+
+#Apply trained model to make prediction (on test set). After running this the prediction would have been made and we now have to check the model performance.
+Y_pred = model.predict(X_test)
+
+#Print model performance. The model will print the coeficients which are stored in model.coef_ and Intercept stored in model intercept etc. y test is the actual value and y pred is the predicted value.
+print('Coefficients:', model.coef_)
+print('Intercept:', model.intercept_)
+print('Mean squared error (MSE): %.2f'
+      % mean_squared_error(Y_test, Y_pred))
+print('Coefficient of determination (R^2): %.2f'
+      % r2_score(Y_test, Y_pred))
+      
+      #The coeficients above are representing each of the weight values of the 10 variables and the y intercept is 151, i.e. that one without the coeficient.
+      
+      #Why do we use %.2f? Well, it is used for string formating because by default r2_score returns a floating numbers which is 0.484....
+ 
+ r2_score(Y_test, Y_pred)
+ 
+ #If we check the data type, 
+r2_score(Y_test, Y_pred).dtype
+
+#The % that we see is called the modulo operator. We will be using the modulo operator to format the numbers by rounding it off. Say we say 
+15 % 6
+
+#That 3 is the modulo operator.So the modulo operator is used to format the numbers here. The %.3f means there are 3 decimals that we are going to use.
+'%f' % 0.523810833536016
+
+#Round it off to 3 digits
+'%.3f' % 0.523810833536016
+
+#Round it off to 2 digits
+'%.2f' % 0.523810833536016
+
+#Check out the data
+Y_test
+
+Y_pred
+
+import numpy as np
+np.array(Y_test)
+
+#Create the scatter plot: 
+sns.scatterplot(Y_test, Y_pred)
+
+#To modify how it looks 
+sns.scatterplot(Y_test, Y_pred, marker="+")
